@@ -1,0 +1,7 @@
+[toml]
+int = 1
+str = "abc"
+arr = ["a", "b", "c"]
+map = { a = 1, b = 2 }
+empty_arr = []
+empty_map = {}
