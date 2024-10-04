@@ -1,22 +1,20 @@
 # go-conf
 
-[中文](README_CN.md)
+[英文](README.md)
 
-A layered configuration manager. It supports multiple configuration sources
-(environment variables, command line arguments, and configuration files) and
-it allows for overriding configuration values at runtime.
+一个分层的配置管理器。它支持多个配置源(环境变量、命令行参数和配置文件等)，并且允许向前覆盖。
 
-- Layer 1: Properties set by func `SetProperty`
-- Layer 2: Properties set by local static files
-- Layer 3: Properties set by environment variables
-- Layer 4: Properties set by command line arguments
-- Layer 5: Properties set by remote dynamic sources
+- Layer 1: 通过函数 `SetProperty` 设置的属性
+- Layer 2: 通过本地静态文件设置的属性
+- Layer 3: 通过环境变量设置的属性
+- Layer 4: 通过命令行参数设置的属性
+- Layer 5: 通过远程动态文件设置的属性
 
-The properties in the lower layers are overridden by the higher ones.
+较低层级的属性会被较高层级的属性覆盖。
 
-### Usage
+### 使用
 
-1. Initialize a configuration manager.
+1. 初始化配置管理器。
 
 ```go
 import "github.com/lvan100/go-conf"
@@ -39,7 +37,7 @@ var p conf.ReadOnlyProperties
 p, err = c.Refresh() // You get a merged read-only properties here.
 ```
 
-2. Bind the properties into values.
+2. 将属性绑定到值上。
 
 ```go
 type SomeOne struct {
