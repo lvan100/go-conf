@@ -633,7 +633,7 @@ func TestConfiguration(t *testing.T) {
 			t.Fatal(err)
 		}
 
-		location, _ := time.LoadLocation("Asia/ShangHai")
+		location := time.FixedZone("CST+0800", 8*60*60)
 		expectTime := time.Date(2024, 10, 1, 0, 0, 0, 0, location)
 		if !gotTime.Equal(expectTime) {
 			t.Fatalf("got %v, expect %v", gotTime, expectTime)
