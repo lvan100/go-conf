@@ -1,5 +1,12 @@
 # go-conf
 
+<div>
+ <img src="https://img.shields.io/github/license/lvan100/go-conf" alt="license"/>
+ <img src="https://img.shields.io/github/go-mod/go-version/lvan100/go-conf" alt="go-version"/>
+ <img src="https://img.shields.io/github/v/release/lvan100/go-conf?include_prereleases" alt="release"/>
+ <img src='https://coveralls.io/repos/github/lvan100/go-conf/badge.svg?branch=main' alt='Coverage Status' />
+</div>
+
 [英文](README.md)
 
 一个分层的配置管理器。它支持多个配置源(环境变量、命令行参数和配置文件等)，并且允许向前覆盖。

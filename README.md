@@ -1,5 +1,12 @@
 # go-conf
 
+<div>
+ <img src="https://img.shields.io/github/license/lvan100/go-conf" alt="license"/>
+ <img src="https://img.shields.io/github/go-mod/go-version/lvan100/go-conf" alt="go-version"/>
+ <img src="https://img.shields.io/github/v/release/lvan100/go-conf?include_prereleases" alt="release"/>
+ <img src='https://coveralls.io/repos/github/lvan100/go-conf/badge.svg?branch=main' alt='Coverage Status' />
+</div>
+
 [中文](README_CN.md)
 
 A layered configuration manager. It supports multiple configuration sources
