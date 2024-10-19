@@ -112,7 +112,19 @@ func ParseTag(tag string) (ret ParsedTag, err error) {
 	return conf.ParseTag(tag)
 }
 
+/****************************** conf.Properties ******************************/
+
+// Properties is a simple properties implementation.
+type Properties = conf.Properties
+
+func New() *Properties {
+	return conf.New()
+}
+
 /**************************** cfgr.Configuration *****************************/
+
+// ReadOnlyProperties is the interface for read-only properties.
+type ReadOnlyProperties = cfgr.ReadOnlyProperties
 
 // Configuration is a layered configuration manager.
 type Configuration = cfgr.Configuration
@@ -120,6 +132,3 @@ type Configuration = cfgr.Configuration
 func NewConfiguration() *Configuration {
 	return cfgr.New()
 }
-
-// ReadOnlyProperties is the interface for read-only properties.
-type ReadOnlyProperties = cfgr.ReadOnlyProperties

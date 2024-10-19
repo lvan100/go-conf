@@ -299,6 +299,46 @@ func TestStorage(t *testing.T) {
 	}
 }
 
+func TestProperties(t *testing.T) {
+	c := conf.New()
+	err := c.Load("testdata/conf.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+	err = c.Load("testdata/conf.toml")
+	if err != nil {
+		t.Fatal(err)
+	}
+	got := c.Data()
+	expect := flat.FlattenMap(map[string]interface{}{
+		"toml": map[string]interface{}{
+			"int": 1,
+			"str": "abc",
+			"arr": []string{"a", "b", "c"},
+			"map": map[string]interface{}{
+				"a": "1",
+				"b": "2",
+			},
+			"empty_arr": []interface{}{},
+			"empty_map": map[string]interface{}{},
+		},
+		"json": map[string]interface{}{
+			"int": 1,
+			"str": "abc",
+			"arr": []string{"a", "b", "c"},
+			"map": map[string]interface{}{
+				"a": "1",
+				"b": "2",
+			},
+			"empty_arr": []interface{}{},
+			"empty_map": map[string]interface{}{},
+		},
+	})
+	if !reflect.DeepEqual(got, expect) {
+		t.Fatalf("got %v, expect %v", got, expect)
+	}
+}
+
 func TestConfiguration(t *testing.T) {
 
 	type Point struct {
@@ -411,6 +451,16 @@ func TestConfiguration(t *testing.T) {
 		_, gotErr := c.Refresh()
 		if !errors.Is(gotErr, conf.ErrNotExist) {
 			t.Fatalf("got %v, expect %v", gotErr, conf.ErrNotExist)
+		}
+		c.File().Clear()
+	}
+
+	{
+		c.File().Add("testdata/invalid.json")
+		_, gotErr := c.Refresh()
+		expectErr := errors.New(`invalid character 't' looking for beginning of object key string`)
+		if fmt.Sprint(gotErr) != expectErr.Error() {
+			t.Fatalf("got %v, expect %v", gotErr, expectErr)
 		}
 		c.File().Clear()
 	}
